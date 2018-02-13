@@ -1,0 +1,62 @@
+.app {
+  background-color: #efeff4;
+  width: 750;
+  flex: 1;
+}
+
+.content{
+  width: 750;
+  height: 510;
+  background-color: white;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-top: 50;
+}
+
+.item {
+  width: 250;
+  height: 160;
+  justify-content: center;
+  align-items: center;
+}
+
+.item_top {
+  margin-bottom: 80;
+}
+
+.grade_icon {
+  width: 115;
+  height: 96;
+}
+
+.card_icon {
+  width: 90;
+  height: 100;
+}
+
+
+.ele_icon {
+  width: 80;
+  height: 100;
+}
+
+.cal_icon {
+  width: 105;
+  height: 100;
+}
+
+.noti_icon {
+  width: 90;
+  height: 105;
+}
+
+.info_icon {
+  width: 122;
+  height: 97;
+}
+
+.item_font {
+  margin-top: 20;
+  font-size: 28px;
+  color: #6767fa;
+}
