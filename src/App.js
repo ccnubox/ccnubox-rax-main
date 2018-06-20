@@ -16,6 +16,8 @@ import calIcon from "./assets/cal.png";
 import bannerPlaceholder from "./assets/banner-placeholder.png";
 
 const stream = require("@weex-module/stream");
+const navigator = require("@weex-module/navigator");
+const test = require("@weex-module/test");
 
 let styles = {
   slider: {
@@ -50,12 +52,18 @@ let styles = {
   }
 };
 
+function  foo (params) {
+  alert(params)
+}
+
 class App extends Component {
   state = {
     banners: []
   };
 
   componentWillMount() {
+    // test.mainLogin("444", 'fff', foo)
+    // test.getGrade("2014", '3', foo)
     let requestOptions = {
       method: "GET",
       url: "https://ccnubox.muxixyz.com/api/ios/banner/"
@@ -85,7 +93,7 @@ class App extends Component {
             <Touchable
               style={styles.itemWrap}
               onPress={() => {
-                alert(banner.url);
+                test.push(banner.url)
               }}
             >
               <Image
@@ -121,7 +129,7 @@ class App extends Component {
             <Touchable
               style={styles1.item}
               onPress={() => {
-                alert("hello");
+                test.push("ccnubox://grade")
               }}
             >
               <Image style={[styles1.grade_icon]} source={gradeIcon} />
@@ -132,7 +140,7 @@ class App extends Component {
             <Touchable
               style={styles1.item}
               onPress={() => {
-                alert("hello");
+                test.push("ccnubox://ele")
               }}
             >
               <Image style={[styles1.ele_icon]} source={eleIcon} />
@@ -143,7 +151,7 @@ class App extends Component {
             <Touchable
               style={styles1.item}
               onPress={() => {
-                alert("hello");
+                test.push("ccnubox://card")
               }}
             >
               <Image style={[styles1.card_icon]} source={cardIcon} />
@@ -154,7 +162,7 @@ class App extends Component {
             <Touchable
               style={styles1.item}
               onPress={() => {
-                alert("hello");
+                test.push("ccnubox://cal")
               }}
             >
               <Image style={[styles1.cal_icon]} source={calIcon} />
@@ -165,7 +173,7 @@ class App extends Component {
             <Touchable
               style={styles1.item}
               onPress={() => {
-                alert("hello");
+                test.push("ccnubox://noti")
               }}
             >
               <Image style={[styles1.noti_icon]} source={notiIcon} />
@@ -176,7 +184,7 @@ class App extends Component {
             <Touchable
               style={styles1.item}
               onPress={() => {
-                alert("hello");
+                test.push("ccnubox://info")
               }}
             >
               <Image style={[styles1.info_icon]} source={infoIcon} />
