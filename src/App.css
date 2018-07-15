@@ -2,6 +2,7 @@
   background-color: #efeff4;
   width: 750;
   flex: 1;
+  margin-bottom: 50;
 }
 
 .content{
@@ -10,6 +11,9 @@
   background-color: white;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.content_first {
   padding-top: 50;
 }
 
@@ -34,6 +38,31 @@
   height: 100;
 }
 
+.xueer_icon {
+  width: 102;
+  height: 100;
+}
+
+.website_icon {
+  width: 96;
+  height: 91;
+}
+
+
+.gpa_icon {
+  width: 87;
+  height: 100;
+}
+
+.cengke_icon {
+  width: 122;
+  height: 100;
+}
+
+.idle_icon {
+  width:109;
+  height: 100;
+}
 
 .ele_icon {
   width: 80;
