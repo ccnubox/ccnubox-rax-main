@@ -64,24 +64,21 @@ class App extends Component {
   };
 
   getBannerList() {
-    BannerService.getList()
-      .then(data => {
-        this.setState({
-          banners: data
-        });
-      })
-      .catch(err => {
-        confirm(`服务端错误: ${err.status}`, "重试", "取消").then(val => {
-          if (val > 0) {
-            this.getBannerList();
-          }
-        });
+    BannerService.getList().then(data => {
+      this.setState({
+        banners: data
       });
+    });
+    // .catch(err => {
+    //   confirm(`服务端错误: ${err.status}`, "重试", "取消").then(val => {
+    //     if (val > 0) {
+    //       this.getBannerList();
+    //     }
+    //   });
+    // });
   }
 
   componentWillMount() {
-    // native.mainLogin("444", 'fff', foo)
-    // native.getGrade("2014", '3', foo)
     this.getBannerList();
   }
 
@@ -133,7 +130,7 @@ class App extends Component {
           height: screen.height
         }}
       >
-        <Notification />
+        <Notification pageId="com.muxistudio.main"/>
         <View style={styles1.app}>
           <Slider
             className="slider"
@@ -154,7 +151,13 @@ class App extends Component {
               <Touchable
                 style={styles1.item}
                 onPress={() => {
-                  native.push("ccnubox://grade");
+                  native.checkLogin(ret => {
+                    if (ret) {
+                      native.push(`ccnubox://grade.main?sid=${ret}`);
+                    } else {
+                      native.push("ccnubox://login");
+                    }
+                  });
                 }}
               >
                 <Image style={[styles1.grade_icon]} source={gradeIcon} />
@@ -176,7 +179,14 @@ class App extends Component {
               <Touchable
                 style={styles1.item}
                 onPress={() => {
-                  native.push("ccnubox://card");
+                  native.push(`ccnubox://card?sid=${2016210942}`);
+                  // native.checkLogin(ret => {
+                  //   if (ret) {
+                      
+                  //   } else {
+                  //     native.push("ccnubox://login");
+                  //   }
+                  // });
                 }}
               >
                 <Image style={[styles1.card_icon]} source={cardIcon} />
@@ -198,7 +208,7 @@ class App extends Component {
               <Touchable
                 style={styles1.item}
                 onPress={() => {
-                  native.push("ccnubox://noti");
+                  native.push("ccnubox://noti.list");
                 }}
               >
                 <Image style={[styles1.noti_icon]} source={notiIcon} />
@@ -223,7 +233,7 @@ class App extends Component {
               <Touchable
                 style={styles1.item}
                 onPress={() => {
-                  native.push("ccnubox://grade");
+                  native.push("ccnubox://classroom.main");
                 }}
               >
                 <Image style={[styles1.idle_icon]} source={idleIcon} />
@@ -234,7 +244,7 @@ class App extends Component {
               <Touchable
                 style={styles1.item}
                 onPress={() => {
-                  native.getDormInfo(this.navToEle);
+                  native.push("https://xueer.muxixyz.com");
                 }}
               >
                 <Image style={[styles1.xueer_icon]} source={xueerIcon} />
@@ -245,7 +255,7 @@ class App extends Component {
               <Touchable
                 style={styles1.item}
                 onPress={() => {
-                  native.push("ccnubox://cengke");
+                  native.push("ccnubox://cengke.main");
                 }}
               >
                 <Image style={[styles1.cengke_icon]} source={cengkeIcon} />
@@ -267,7 +277,8 @@ class App extends Component {
               <Touchable
                 style={styles1.item}
                 onPress={() => {
-                  native.push("ccnubox://gpa");
+                  alert("此功能正在开发中");
+                  //native.push("ccnubox://gpa");
                 }}
               >
                 <Image style={[styles1.gpa_icon]} source={gpaIcon} />
