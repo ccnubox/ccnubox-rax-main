@@ -179,14 +179,13 @@ class App extends Component {
               <Touchable
                 style={styles1.item}
                 onPress={() => {
-                  native.push(`ccnubox://card?sid=${2016210942}`);
-                  // native.checkLogin(ret => {
-                  //   if (ret) {
-                      
-                  //   } else {
-                  //     native.push("ccnubox://login");
-                  //   }
-                  // });
+                  native.checkLogin(ret => {
+                    if (ret) {
+                      native.push(`ccnubox://card?sid=${ret}`);
+                    } else {
+                      native.push("ccnubox://login");
+                    }
+                  });
                 }}
               >
                 <Image style={[styles1.card_icon]} source={cardIcon} />
@@ -197,7 +196,7 @@ class App extends Component {
               <Touchable
                 style={styles1.item}
                 onPress={() => {
-                  native.push("ccnubox://cal");
+                  native.push("ccnubox://calendar");
                 }}
               >
                 <Image style={[styles1.cal_icon]} source={calIcon} />
