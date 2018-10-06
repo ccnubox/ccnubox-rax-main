@@ -80,6 +80,7 @@ class App extends Component {
 
   componentWillMount() {
     this.getBannerList();
+    native.log("v2.0.0-beta2");
   }
 
   navToEle(eleInfo) {
@@ -90,7 +91,7 @@ class App extends Component {
         }&dorm=${eleInfo.dorm}`
       );
     } else {
-      native.push("ccnubox://ele");
+      native.push("ccnubox://ele.main");
     }
   }
 
@@ -130,7 +131,7 @@ class App extends Component {
           height: screen.height
         }}
       >
-        <Notification pageId="com.muxistudio.main"/>
+        <Notification pageId="com.muxistudio.main" />
         <View style={styles1.app}>
           <Slider
             className="slider"
@@ -203,6 +204,18 @@ class App extends Component {
                 <Text style={[styles1.item_font]}>校历</Text>
               </Touchable>
             </View>
+
+            <View style={[styles1.item]}>
+              <Touchable
+                style={styles1.item}
+                onPress={() => {
+                  native.push("ccnubox://website");
+                }}
+              >
+                <Image style={[styles1.website_icon]} source={websiteIcon} />
+                <Text style={[styles1.item_font]}>常用网站</Text>
+              </Touchable>
+            </View>
             <View style={styles1.item}>
               <Touchable
                 style={styles1.item}
@@ -212,17 +225,6 @@ class App extends Component {
               >
                 <Image style={[styles1.noti_icon]} source={notiIcon} />
                 <Text style={[styles1.item_font]}>通知公告</Text>
-              </Touchable>
-            </View>
-            <View style={styles1.item}>
-              <Touchable
-                style={styles1.item}
-                onPress={() => {
-                  native.push("ccnubox://info");
-                }}
-              >
-                <Image style={[styles1.info_icon]} source={infoIcon} />
-                <Text style={[styles1.item_font]}>部门作息</Text>
               </Touchable>
             </View>
           </View>
@@ -261,18 +263,19 @@ class App extends Component {
                 <Text style={[styles1.item_font]}>蹭课</Text>
               </Touchable>
             </View>
-            <View style={[styles1.item]}>
+            <View style={styles1.item}>
               <Touchable
                 style={styles1.item}
                 onPress={() => {
-                  native.push("ccnubox://website");
+                  native.push("ccnubox://info");
                 }}
               >
-                <Image style={[styles1.website_icon]} source={websiteIcon} />
-                <Text style={[styles1.item_font]}>常用网站</Text>
+                <Image style={[styles1.info_icon]} source={infoIcon} />
+                <Text style={[styles1.item_font]}>部门作息</Text>
               </Touchable>
             </View>
-            <View style={styles1.item}>
+
+            {/* <View style={styles1.item}>
               <Touchable
                 style={styles1.item}
                 onPress={() => {
@@ -283,7 +286,7 @@ class App extends Component {
                 <Image style={[styles1.gpa_icon]} source={gpaIcon} />
                 <Text style={[styles1.item_font]}>学分绩</Text>
               </Touchable>
-            </View>
+            </View> */}
           </View>
         </View>
       </ScrollView>
