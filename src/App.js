@@ -275,18 +275,17 @@ class App extends Component {
               </Touchable>
             </View>
 
-            {/* <View style={styles1.item}>
+            <View style={styles1.item}>
               <Touchable
                 style={styles1.item}
                 onPress={() => {
-                  alert("此功能正在开发中");
-                  //native.push("ccnubox://gpa");
+                  native.push("ccnubox://gpa.main");
                 }}
               >
                 <Image style={[styles1.gpa_icon]} source={gpaIcon} />
                 <Text style={[styles1.item_font]}>学分绩</Text>
               </Touchable>
-            </View> */}
+            </View>
           </View>
         </View>
       </ScrollView>
