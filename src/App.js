@@ -279,7 +279,13 @@ class App extends Component {
               <Touchable
                 style={styles1.item}
                 onPress={() => {
-                  native.push("ccnubox://gpa.main");
+                  native.checkLogin(ret => {
+                    if (ret) {
+                      native.push(`ccnubox://gpa.main?sid=${ret}`);
+                    } else {
+                      native.push("ccnubox://login");
+                    }
+                  });
                 }}
               >
                 <Image style={[styles1.gpa_icon]} source={gpaIcon} />
