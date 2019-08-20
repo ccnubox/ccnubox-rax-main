@@ -281,7 +281,15 @@ class App extends Component {
                 onPress={() => {
                   native.checkLogin(ret => {
                     if (ret) {
-                      native.push(`ccnubox://gpa.main?sid=${ret}`);
+                      native.getStuInfo(ret => {
+                        if (ret.code === "200") {
+                          native.push(
+                            `ccnubox://gpa.main?sid=${ret.sid}&pwd=${ret.pwd}`
+                          );
+                        } else {
+                          native.push("ccnubox://login");
+                        }
+                      });
                     } else {
                       native.push("ccnubox://login");
                     }
