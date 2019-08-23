@@ -111,6 +111,12 @@ class App extends Component {
               style={styles.itemWrap}
               onPress={() => {
                 native.push(banner.url);
+                native.reportInsightUserEvent(
+                  "bannerClick",
+                  "",
+                  "",
+                  banner.url
+                );
               }}
             >
               <Image
@@ -154,7 +160,15 @@ class App extends Component {
                 onPress={() => {
                   native.checkLogin(ret => {
                     if (ret) {
-                      native.push(`ccnubox://grade.main?sid=${ret}`);
+                      native.getStuInfo(ret => {
+                        if (ret.code === "200") {
+                          native.push(
+                            `ccnubox://grade.main?sid=${ret.sid}&pwd=${ret.pwd}`
+                          );
+                        } else {
+                          native.push("ccnubox://login");
+                        }
+                      });
                     } else {
                       native.push("ccnubox://login");
                     }
@@ -205,76 +219,6 @@ class App extends Component {
               </Touchable>
             </View>
 
-            <View style={[styles1.item]}>
-              <Touchable
-                style={styles1.item}
-                onPress={() => {
-                  native.push("ccnubox://website");
-                }}
-              >
-                <Image style={[styles1.website_icon]} source={websiteIcon} />
-                <Text style={[styles1.item_font]}>常用网站</Text>
-              </Touchable>
-            </View>
-            <View style={styles1.item}>
-              <Touchable
-                style={styles1.item}
-                onPress={() => {
-                  native.push("ccnubox://noti.list");
-                }}
-              >
-                <Image style={[styles1.noti_icon]} source={notiIcon} />
-                <Text style={[styles1.item_font]}>通知公告</Text>
-              </Touchable>
-            </View>
-          </View>
-
-          <View style={styles1.content}>
-            <View style={[styles1.item, styles1.item_top]}>
-              <Touchable
-                style={styles1.item}
-                onPress={() => {
-                  native.push("ccnubox://classroom.main");
-                }}
-              >
-                <Image style={[styles1.idle_icon]} source={idleIcon} />
-                <Text style={[styles1.item_font]}>空闲教室</Text>
-              </Touchable>
-            </View>
-            <View style={[styles1.item, styles1.item_top]}>
-              <Touchable
-                style={styles1.item}
-                onPress={() => {
-                  native.push("https://xueer.muxixyz.com");
-                }}
-              >
-                <Image style={[styles1.xueer_icon]} source={xueerIcon} />
-                <Text style={[styles1.item_font]}>学而</Text>
-              </Touchable>
-            </View>
-            <View style={[styles1.item, styles1.item_top]}>
-              <Touchable
-                style={styles1.item}
-                onPress={() => {
-                  native.push("ccnubox://cengke.main");
-                }}
-              >
-                <Image style={[styles1.cengke_icon]} source={cengkeIcon} />
-                <Text style={[styles1.item_font]}>蹭课</Text>
-              </Touchable>
-            </View>
-            <View style={styles1.item}>
-              <Touchable
-                style={styles1.item}
-                onPress={() => {
-                  native.push("ccnubox://info");
-                }}
-              >
-                <Image style={[styles1.info_icon]} source={infoIcon} />
-                <Text style={[styles1.item_font]}>部门作息</Text>
-              </Touchable>
-            </View>
-
             <View style={styles1.item}>
               <Touchable
                 style={styles1.item}
@@ -298,6 +242,78 @@ class App extends Component {
               >
                 <Image style={[styles1.gpa_icon]} source={gpaIcon} />
                 <Text style={[styles1.item_font]}>学分绩</Text>
+              </Touchable>
+            </View>
+
+            <View style={[styles1.item]}>
+              <Touchable
+                style={styles1.item}
+                onPress={() => {
+                  native.push("ccnubox://website");
+                }}
+              >
+                <Image style={[styles1.website_icon]} source={websiteIcon} />
+                <Text style={[styles1.item_font]}>常用网站</Text>
+              </Touchable>
+            </View>
+          </View>
+
+          <View style={styles1.content}>
+            <View style={[styles1.item, styles1.item_top]}>
+              <Touchable
+                style={styles1.item}
+                onPress={() => {
+                  native.push("ccnubox://noti.list");
+                }}
+              >
+                <Image style={[styles1.noti_icon]} source={notiIcon} />
+                <Text style={[styles1.item_font]}>通知公告</Text>
+              </Touchable>
+            </View>
+
+            <View style={[styles1.item, styles1.item_top]}>
+              <Touchable
+                style={styles1.item}
+                onPress={() => {
+                  native.push("ccnubox://classroom.main");
+                }}
+              >
+                <Image style={[styles1.idle_icon]} source={idleIcon} />
+                <Text style={[styles1.item_font]}>空闲教室</Text>
+              </Touchable>
+            </View>
+
+            <View style={[styles1.item, styles1.item_top]}>
+              <Touchable
+                style={styles1.item}
+                onPress={() => {
+                  native.push("ccnubox://cengke.main");
+                }}
+              >
+                <Image style={[styles1.cengke_icon]} source={cengkeIcon} />
+                <Text style={[styles1.item_font]}>蹭课</Text>
+              </Touchable>
+            </View>
+            <View style={styles1.item}>
+              <Touchable
+                style={styles1.item}
+                onPress={() => {
+                  native.push("ccnubox://info");
+                }}
+              >
+                <Image style={[styles1.info_icon]} source={infoIcon} />
+                <Text style={[styles1.item_font]}>部门作息</Text>
+              </Touchable>
+            </View>
+            <View style={[styles1.item, styles1.item_top]}>
+              <Touchable
+                style={styles1.item}
+                onPress={() => {
+                  native.push("https://xueer.muxixyz.com");
+                }}
+              >
+                <Image style={[styles1.xueer_icon]} source={xueerIcon} />
+                <Text style={[styles1.item_font]}>学而</Text>
               </Touchable>
             </View>
           </View>
