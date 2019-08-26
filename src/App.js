@@ -163,7 +163,7 @@ class App extends Component {
                       native.getStuInfo(ret => {
                         if (ret.code === "200") {
                           native.push(
-                            `ccnubox://grade.main?sid=${ret.sid}&pwd=${ret.pwd}`
+                            `ccnubox://grade.main?sid=${ret.sid}&pwd=${encodeURIComponent(ret.pwd)}`
                           );
                         } else {
                           native.push("ccnubox://login");
@@ -228,7 +228,7 @@ class App extends Component {
                       native.getStuInfo(ret => {
                         if (ret.code === "200") {
                           native.push(
-                            `ccnubox://gpa.main?sid=${ret.sid}&pwd=${ret.pwd}`
+                            `ccnubox://gpa.main?sid=${ret.sid}&pwd=${encodeURIComponent(ret.pwd)}`
                           );
                         } else {
                           native.push("ccnubox://login");
